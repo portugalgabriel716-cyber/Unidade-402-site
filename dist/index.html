@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Explore a Unidade 402 em 3D. Navegue pelas três suítes, veja a planta de cima e descubra cada ambiente do apartamento.">
+  <title>Unidade 402 — Explore seu espaço</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/build/three.module.js","three/addons/":"./vendor/examples/jsm/"}}</script>
+</head>
+<body>
+  <svg aria-hidden="true" class="sprite" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 3 9 5v9l-9 5-9-5V8l9-5Zm0 10 9-5M12 13 3 8m9 5v9M7.5 5.5l9 5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 12h18M12 3v18"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v11H3V10Zm6 11v-8h6v8"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5ZM2 12l10 5 10-5M2 16l10 5 10-5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 7h5l2-3h4l2 3h5v14H3V7Z"/><circle cx="12" cy="13" r="4"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 3H3v6m12-6h6v6M3 15v6h6m12-6v6h-6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  </defs></svg>
+  <header class="header">
+    <a class="brand" href="./" aria-label="Unidade 402, início"><span class="brand-mark"><svg><use href="#i-cube"/></svg></span><span class="brand-name">espaço<span class="brand-dot">.</span></span><span class="brand-divider"></span><span class="unit-name">Unidade <b>402</b></span></a>
+    <span class="header-caption">UM NOVO OLHAR SOBRE O SEU APARTAMENTO</span>
+    <a class="download-link" href="./assets/unidade-402.glb" download><svg><use href="#i-download"/></svg><span>Baixar modelo</span></a>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar" aria-label="Ambientes do apartamento">
+      <div class="sidebar-intro"><span class="eyebrow">SEU APARTAMENTO, EM 3D</span><h1>Um espaço.<br>Novas perspectivas.</h1><p>Explore cada ambiente no seu ritmo.</p></div>
+      <div class="rooms-header"><h2>AMBIENTES</h2><span>05</span></div>
+      <nav class="rooms" aria-label="Escolha um ambiente">
+        <button class="room active" data-room="all" aria-pressed="true"><span class="room-num"><svg><use href="#i-cube"/></svg></span><span class="room-text"><b>Visão geral</b><small>O apartamento por inteiro</small></span><svg class="room-arrow"><use href="#i-arrow"/></svg></button>
+        <button class="room" data-room="queen" aria-pressed="false"><span class="room-num">01</span><span class="room-text"><b>Suíte Queen</b><small>12,01 m²</small></span><svg class="room-arrow"><use href="#i-arrow"/></svg></button>
+        <button class="room" data-room="casal" aria-pressed="false"><span class="room-num">02</span><span class="room-text"><b>Suíte Casal</b><small>9,50 m²</small></span><svg class="room-arrow"><use href="#i-arrow"/></svg></button>
+        <button class="room" data-room="solteirao" aria-pressed="false"><span class="room-num">03</span><span class="room-text"><b>Suíte Solteirão</b><small>7,02 m²</small></span><svg class="room-arrow"><use href="#i-arrow"/></svg></button>
+        <button class="room" data-room="living" aria-pressed="false"><span class="room-num">04</span><span class="room-text"><b>Estar e jantar</b><small>Um ambiente para compartilhar</small></span><svg class="room-arrow"><use href="#i-arrow"/></svg></button>
+        <button class="room" data-room="kitchen" aria-pressed="false"><span class="room-num">05</span><span class="room-text"><b>Cozinha e serviço</b><small>Praticidade no dia a dia</small></span><svg class="room-arrow"><use href="#i-arrow"/></svg></button>
+      </nav>
+      <div class="detail" aria-live="polite"><span class="eyebrow" id="detail-kicker">PENSADO EM CADA DETALHE</span><h3 id="detail-title">Explore seu próximo olhar.</h3><p id="detail-description">Três suítes, ambientes integrados e espaço para imaginar a vida acontecendo.</p><div id="detail-measures" class="detail-measures"><span><b>03</b> suítes</span><span><b>03</b> banheiros</span></div></div>
+      <div class="sidebar-footer"><a href="./assets/planta-original.pdf" target="_blank" rel="noopener">Ver a planta original <span>↗</span></a><button id="about-open">Sobre este modelo</button></div>
+    </aside>
+    <section class="viewer" aria-label="Visualizador 3D interativo">
+      <div id="canvas-host" tabindex="0" aria-label="Modelo 3D do apartamento. Arraste para girar, use a roda para aproximar e o botão direito para mover."></div>
+      <div id="labels" aria-hidden="true"></div>
+      <div class="view-controls">
+        <div class="segmented" role="group" aria-label="Tipo de vista"><button class="selected" data-view="perspective" aria-pressed="true"><svg><use href="#i-cube"/></svg>Perspectiva</button><button data-view="top" aria-pressed="false"><svg><use href="#i-grid"/></svg>Planta</button></div>
+        <div class="segmented mode-control" role="group" aria-label="Altura das paredes"><button class="selected" data-mode="cut" aria-pressed="true">Em corte</button><button data-mode="full" aria-pressed="false">Completo</button></div>
+      </div>
+      <div class="scene-caption"><span class="status-dot"></span><span id="scene-caption">MAQUETE INTERATIVA</span></div>
+      <div class="model-loading" id="loading" role="status"><span class="loading-cube"><svg><use href="#i-cube"/></svg></span><h2>Seu espaço está chegando.</h2><p id="loading-text">Preparando o apartamento em 3D…</p><div class="loading-track"><span id="loading-bar"></span></div></div>
+      <div id="error" class="error-panel" hidden><h2>Não foi possível abrir o 3D.</h2><p id="error-text">Atualize a página ou tente um navegador com WebGL.</p><button onclick="location.reload()">Tentar novamente</button><a href="./assets/unidade-402.glb" download>Baixar o modelo 3D</a></div>
+      <div class="viewer-bottom">
+        <div class="interaction-hint"><span class="mouse-icon"></span><span>Arraste para explorar <i>·</i> Role para aproximar</span></div>
+        <div class="toolbar" role="group" aria-label="Ferramentas de visualização">
+          <button id="reset" title="Visão inicial" aria-label="Voltar à visão inicial"><svg><use href="#i-home"/></svg></button><span class="tool-divider"></span>
+          <button id="zoom-in" title="Aproximar" aria-label="Aproximar"><svg><use href="#i-plus"/></svg></button><button id="zoom-out" title="Afastar" aria-label="Afastar"><svg><use href="#i-minus"/></svg></button><span class="tool-divider"></span>
+          <button id="layers-open" title="Camadas" aria-label="Configurar camadas"><svg><use href="#i-layers"/></svg></button><button id="snapshot" title="Salvar imagem" aria-label="Salvar imagem da vista atual"><svg><use href="#i-camera"/></svg></button><button id="fullscreen" title="Tela cheia" aria-label="Alternar tela cheia"><svg><use href="#i-expand"/></svg></button>
+        </div>
+        <div class="orientation" aria-hidden="true"><span>N</span><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="21"/><path id="compass" d="m25 10 6 24-6-4-6 4Z"/></svg><small>UNIDADE 402</small></div>
+      </div>
+      <div class="toast" id="toast" role="status" hidden></div>
+    </section>
+  </main>
+  <dialog id="layers-dialog"><form method="dialog"><div class="dialog-header"><div><span class="eyebrow">A SUA MANEIRA</span><h2>O que você quer ver?</h2></div><button class="icon-button" aria-label="Fechar camadas"><svg><use href="#i-close"/></svg></button></div><label class="switch-row"><span><b>Mobiliário</b><small>Camas, roupeiros e área social</small></span><input id="furniture-toggle" type="checkbox" checked><span class="switch"></span></label><label class="switch-row"><span><b>Nomes dos ambientes</b><small>Identifique os espaços na maquete</small></span><input id="labels-toggle" type="checkbox"><span class="switch"></span></label><p class="dialog-note">Use “Em corte” para ver o interior ou “Completo” para visualizar a altura das paredes.</p></form></dialog>
+  <dialog id="about-dialog"><form method="dialog"><div class="dialog-header"><div><span class="eyebrow">DA PLANTA AO SEU NAVEGADOR</span><h2>Sobre este modelo</h2></div><button class="icon-button" aria-label="Fechar informações"><svg><use href="#i-close"/></svg></button></div><p>Este é o apartamento modelado no Blender a partir da planta da Unidade 402, convertido para uma experiência 3D interativa.</p><dl><div><dt>Base do projeto</dt><dd>Planta arquitetônica e layout de camas e roupeiros</dd></div><div><dt>Altura adotada</dt><dd>2,70 m de pé-direito</dd></div><div><dt>Vista em corte</dt><dd>Paredes cortadas a 1,20 m</dd></div></dl><p class="dialog-note">As medidas das camas e dos roupeiros seguem a legenda do PDF. Alturas e acabamentos foram adotados; os móveis da área social são uma proposta de layout.</p></form></dialog>
+  <noscript><div class="noscript">Ative o JavaScript para explorar o apartamento em 3D. <a href="./assets/planta-original.pdf">Você também pode abrir a planta em PDF.</a></div></noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
